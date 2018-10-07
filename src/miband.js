@@ -1,5 +1,6 @@
 'use strict';
-
+// https://github.com/Freeyourgadget/Gadgetbridge/blob/74f47c8e2e68d27e08a294d4e8c3304e881be648/app/src/main/java/nodomain/freeyourgadget/gadgetbridge/devices/huami/HuamiService.java
+// https://github.com/Freeyourgadget/Gadgetbridge/blob/cc7f6d72632cfd9304c60d6cca12c9b9052d0314/app/src/main/java/nodomain/freeyourgadget/gadgetbridge/devices/miband/MiBandService.java
 const EventEmitter = require('events');
 const crypto = require('browserify-aes');
 const debug = require('debug')('MiBand');
@@ -12,6 +13,20 @@ const UUID_SERVICE_DEVICE_INFORMATION = 0x180a
 const UUID_SERVICE_FIRMWARE =           UUID_BASE('1530')
 const UUID_SERVICE_ALERT_NOTIFICATION = 0x1811
 const UUID_SERVICE_IMMEDIATE_ALERT =    0x1802
+
+// miband 2:
+//     public static final UUID UUID_CHARACTERISTIC_ACTIVITY_DATA = UUID.fromString(String.format(BASE_UUID, "FF07"));
+//     public static final UUID UUID_CHARACTERISTIC_SENSOR_DATA = UUID.fromString(String.format(BASE_UUID, "FF0E"));
+// huami:
+//    public static final UUID UUID_SERVICE_HEART_RATE = UUID.fromString(String.format(BASE_UUID, "180D"));
+//     public static final UUID UUID_CHARACTERISTIC_5_ACTIVITY_DATA = UUID.fromString("00000005-0000-3512-2118-0009af100700");
+//     public static final byte[] COMMAND_ENABLE_HR_SLEEP_MEASUREMENT = new byte[]{0x15, 0x00, 0x01};
+//     public static final byte[] COMMAND_DISABLE_HR_SLEEP_MEASUREMENT = new byte[]{0x15, 0x00, 0x00};
+
+// Gatt:
+//     public static final UUID UUID_CHARACTERISTIC_BODY_SENSOR_LOCATION = UUID.fromString((String.format(AbstractBTLEDeviceSupport.BASE_UUID, "2A38")));
+//     public static final UUID UUID_CHARACTERISTIC_HEART_RATE_MEASUREMENT = UUID.fromString((String.format(AbstractBTLEDeviceSupport.BASE_UUID, "2A37")));
+
 const UUID_SERVICE_HEART_RATE =         0x180d
 const UUID_SERVICE_MIBAND_1 =           0xfee0
 const UUID_SERVICE_MIBAND_2 =           0xfee1
